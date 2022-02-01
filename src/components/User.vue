@@ -18,10 +18,9 @@ export default {
       userInfo: "Загрузка...",
     };
   },
-  beforeCreate() {
-    const user = localStorage.getItem(user);
-    if (user) {
-      this.userInfo = user;
+  beforeMount() {
+    if (localStorage.user) {
+      this.userInfo = JSON.parse(localStorage.user);
     } else {
       Api.getUserInfo().then((response) => {
         this.userInfo = response;
@@ -29,7 +28,6 @@ export default {
       });
     }
   },
-  //   mounted() {},
 
   components: { Api },
 };

@@ -14,5 +14,17 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0"
-  }
+  },
+  "description": "```\r npm install\r ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hosfatantabolis/random-beer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hosfatantabolis/random-beer/issues"
+  },
+  "homepage": "https://github.com/hosfatantabolis/random-beer#readme"
 }
