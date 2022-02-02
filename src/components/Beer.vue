@@ -1,11 +1,10 @@
 <template>
   <div>
     <h1>Сегодня ты пьешь:</h1>
-    <!-- <button @click="getBeer">Случайное пивко</button> -->
-    <Button @click="getBeer" text="Случайное пивко"></Button>
-    <div id="beer" v-if="this.info !== null">
-      <!-- {{ info }} -->
-      <ul class="beer__list">
+    
+    <div class="beer" >
+      <Button @click="getBeer" text="Случайное пивко"></Button>
+      <ul class="beer__list" v-if="this.info !== null">
         <li class="beer__list-item">Бренд/Фирма: <span class="beer__info">{{ info.brand || "Загрузка..."}}</span></li>
         <li class="beer__list-item">Название: <span class="beer__info">{{ info.name || "Загрузка..."}}</span></li>
         <li class="beer__list-item">Стиль: <span class="beer__info">{{ info.style || "Загрузка..."}}</span></li>
@@ -24,7 +23,7 @@
 import Api from "@/utils/api";
 import Button from "@/components/Button";
 export default {
-  el: "#beer",
+  el: ".beer",
   data() {
     return {
       info: null,
@@ -50,7 +49,7 @@ export default {
 
 }
 .beer__list{
-  list-style: none;
+  /* list-style: none; */
   list-style-type: "\1F37A";
   text-align: left;
 }
