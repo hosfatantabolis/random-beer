@@ -13,16 +13,23 @@
         <li v-for="(value, name) in userInfo" :key="value.id">
          {{ name }}: {{value}}
          {{typeof(value)==="object"? "OBJ":"NOTOBJ"}}
+         <ul v-if="name===employment">
+           <li v-for="(val, names) in value">
+             {{ names }}: {{val}}
+           </li>
+         </ul>
         </li>
       </ul>
     </div>
-    <button class="user__button" @click="showFullInfo">{{infoShown? "Скрыть":"Посмотреть"}}  полную информацию</button>
+    <Button @click="showFullInfo" :text="infoShown ? text='Скрыть полную информацию': text='Посмотреть полную информацию'"> </Button>
+    <!-- <button class="user__button" @click="showFullInfo">{{infoShown? "Скрыть":"Посмотреть"}}  полную информацию</button> -->
     
   </div>
 </template>
 
 <script>
 import Api from "@/utils/api";
+import Button from "@/components/Button";
 export default {
   el: "#user",
   data() {
@@ -44,10 +51,10 @@ export default {
   methods:{
     showFullInfo(){
       this.infoShown = !this.infoShown;
-    }
+    },
   },
 
-  components: { Api },
+  components: { Api, Button },
 };
 </script>
 
@@ -61,7 +68,7 @@ export default {
   width: 100%;
   object-fit: cover;
 }
-.user__button{
+/* .user__button{
   cursor: pointer;
   display:inline-block;
   padding:0.7em 1.4em;
@@ -81,7 +88,7 @@ export default {
 .user__button:hover{
   color:#ffffff;
   background-color:#b81111;
-}
+} */
 .user_hidden{
   display: none;
 }

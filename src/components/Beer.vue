@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>Сегодня ты пьешь:</h1>
-    <button @click="getBeer">Случайное пивко</button>
+    <!-- <button @click="getBeer">Случайное пивко</button> -->
+    <Button @click="getBeer" text="Случайное пивко"></Button>
     <div id="beer" v-if="this.info !== null">
       <!-- {{ info }} -->
       <ul class="beer__list">
@@ -21,6 +22,7 @@
 
 <script>
 import Api from "@/utils/api";
+import Button from "@/components/Button";
 export default {
   el: "#beer",
   data() {
@@ -38,7 +40,7 @@ export default {
         });
     },
   },
-  components: { Api },
+  components: { Api, Button },
 };
 </script>
 
