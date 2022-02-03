@@ -1,13 +1,16 @@
 <template>
   <div class="user">
-    <h2 class="user__title">Профиль пользователя</h2>
+    <h1 class="user__title">Профиль пользователя</h1>
     <div class="user__header">
-      <h3 class="user__name">
-        {{ userInfo.first_name + " " + userInfo.last_name }}
-      </h3>
-    <img class="user__pic" :src="userInfo.avatar" />
+      <img class="user__pic" :src="userInfo.avatar" />
+      <div class="user_column">
+        <h3 class="user__name">
+          {{ userInfo.first_name + " " + userInfo.last_name }}
+        </h3>
+        <Button @click="showFullInfo" :text="infoShown ? text='Скрыть полную информацию': text='Посмотреть полную информацию'"> </Button>
+      </div>    
     </div>
-    <Button @click="showFullInfo" :text="infoShown ? text='Скрыть полную информацию': text='Посмотреть полную информацию'"> </Button>
+    
     <div v-bind:class="['user__full', infoShown ? 'user_shown' : 'user_hidden']">
       <ul class="user__list">
         <li v-for="(value, name) in userInfo" :key="value.id">
@@ -60,6 +63,14 @@ export default {
 </script>
 
 <style>
+.user{
+  margin: auto;
+  max-width: 80%;
+}
+.user__header{
+  display: flex;
+  justify-content: space-between;
+}
 .user__pic {
   border-radius: 50%;
   border: 1px solid black;
@@ -68,6 +79,10 @@ export default {
   height: 120px;
   width: 100%;
   object-fit: cover;
+}
+
+.user_column{
+  align-content: center;
 }
 
 .user_hidden{

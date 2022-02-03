@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Сегодня ты пьешь:</h1>
+    <h2>Сегодня ты пьешь:</h2>
     
     <div class="beer" >
       <Button @click="getBeer" text="Случайное пивко"></Button>
