@@ -91,6 +91,7 @@ export default {
   justify-content: center;
   text-align: left;
   -webkit-mask-image: linear-gradient(90deg,#000 80%,transparent);
+  mask-image: linear-gradient(90deg,#000 80%,transparent);
 }
 
 .user_hidden{
