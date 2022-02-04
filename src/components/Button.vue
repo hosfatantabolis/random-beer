@@ -31,4 +31,10 @@ export default {
   color:#ffffff;
   background-color:#b81111;
 }
+
+@media screen and (min-width: 1500px){
+  .beer__button{
+    font-size: 1.5em;
+  }
+}
 </style>

@@ -20,6 +20,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 60px auto;
+  max-width: 1000px;
+}
+@media screen and (min-width: 1600px){
+  #app{
+    max-width: 1500px;
+  }
 }
 </style>
