@@ -53,7 +53,6 @@ export default {
       this.userInfo = JSON.parse(localStorage.user);
     } else {
       Api.getUserInfo().then((response) => {
-        console.log(response);
         if(response.ok===false){
           this.error = response;
           this.error.state = true;
