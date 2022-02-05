@@ -1,5 +1,5 @@
 <template>
-  <div class="user">
+  <div v-if="error.state==false" class="user">
     <h1 class="user__title">Профиль пользователя</h1>
     <div class="user__header">
       <img class="user__pic" :src="userInfo.avatar" />
@@ -10,7 +10,6 @@
         <Button @click="showFullInfo" :text="infoShown ? text='Скрыть полную информацию': text='Посмотреть полную информацию'"> </Button>
       </div>    
     </div>
-    
     <div v-bind:class="['user__full', infoShown ? 'user_shown' : 'user_hidden']">
       <ul class="user__list">
         <li class="user__list-item" v-for="(value, name) in userInfo" :key="value.id">
@@ -29,6 +28,9 @@
       </ul>
     </div>    
   </div>
+  <div v-if="error.state==true">
+      <p class="user__error">Не удаётся получить информацию о пользователе. Код ошибки: {{error.status}}. Попробуйте обновить страницу.</p>
+  </div>
 </template>
 
 <script>
@@ -41,6 +43,9 @@ export default {
     return {
       userInfo: {first_name: "Загрузка...", last_name: "Загрузка...", avatar: loader},
       infoShown: false,
+      error: {
+        state: false,
+      },
     };
   },
   beforeMount() {
@@ -48,9 +53,19 @@ export default {
       this.userInfo = JSON.parse(localStorage.user);
     } else {
       Api.getUserInfo().then((response) => {
-        this.userInfo = response;
-        localStorage.setItem("user", JSON.stringify(response));
-      });
+        console.log(response);
+        if(response.ok===false){
+          this.error = response;
+          this.error.state = true;
+        }else{
+          this.error.state = false;
+          this.userInfo = response;
+          localStorage.setItem("user", JSON.stringify(response));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     }
   },
   methods:{
@@ -110,12 +125,21 @@ export default {
 .user__info{
   font-weight: bold;
 }
+.user__error{
+  font-weight: bold;
+  font-size: 2.5em;
+  color: red;
+  text-transform:uppercase;
+}
 @media screen and (max-width: 400px){
   .user{
     max-width: 95%;
   }
   .user__list{
     font-size: 0.8em;
+  }
+  .user__error{
+    font-size: 1.5em;
   }
 }
 @media screen and (max-width: 550px){

@@ -15,11 +15,13 @@ class Api {
 
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .then((res) => {
-        return res;
-      })
+      // .then((res) => {
+      //   console.log(res);
+      //   return res;
+      // })
       .catch((err) => {
         console.log(err);
+        return err;
       });
   }
 
@@ -31,10 +33,12 @@ class Api {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(`Ошибка: ${res.status}`);
+        return Promise.reject(res);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log("hello");
+        // console.log(err);
+        return err;
       });
   }
 }
