@@ -15,10 +15,6 @@ class Api {
 
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      // .then((res) => {
-      //   console.log(res);
-      //   return res;
-      // })
       .catch((err) => {
         console.log(err);
         return err;
@@ -36,8 +32,6 @@ class Api {
         return Promise.reject(res);
       })
       .catch((err) => {
-        // console.log("hello");
-        // console.log(err);
         return err;
       });
   }
